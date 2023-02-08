@@ -1,0 +1,3 @@
+//turn off rightmost set bit
+cin>>n;
+return n & (n-1);

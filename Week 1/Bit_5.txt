@@ -1,0 +1,14 @@
+//rotate bits of integer
+            int temp1 = n;
+            int temp2 = n;
+            temp1 = temp1<<(d%16);
+            temp2 = temp2>>(16 - (d%16));
+            int l = (temp1|temp2) & 65535;
+            
+            temp1 = n;
+            temp2 = n;
+            temp1 = temp1>>(d%16);
+            temp2 = temp2<<(16 - (d%16));
+            int r = (temp1|temp2) & 65535;
+            
+            return {l,

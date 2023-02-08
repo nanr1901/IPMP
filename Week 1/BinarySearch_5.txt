@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        vector<int>tail(nums.size(),0);
+        int length=1;
+        if (nums.size()==0) return 0;
+        tail[0]=nums[0];
+        for (int i=1;i<nums.size();i++)
+        {
+            auto b=tail.begin(),e=tail.begin()+length;
+            auto it=lower_bound(b,e,nums[i]);
+            if (it==tail.begin()+length) tail[length++]=nums[i];
+            else *it=nums[i];
+        }
+        return length;
+        
+    }
+};
