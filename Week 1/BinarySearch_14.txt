@@ -1,0 +1,15 @@
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        vector<int>output;
+        for (auto x:nums1)
+            output.push_back(x);
+        for (auto x:nums2) 
+            output.push_back(x);
+        sort(output.begin(),output.end());
+        if (output.size()%2!=0)
+        return output[(output.size()-1)/2];
+        return (output[output.size()/2]+output[(output.size()-1)/2])/2.0;
+        
+    }
+};
