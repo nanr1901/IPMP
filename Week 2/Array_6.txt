@@ -1,0 +1,70 @@
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// } Driver Code Ends
+//User function template for C++
+class Solution{
+public:
+    bool allnine(int num[],int n)
+    {
+        for (int i=0;i<n;i++)
+        if (num[i]!=9) return false;
+        return true;
+    }
+	vector<int> generateNextPalindrome(int num[], int n) {
+	    vector<int>res;
+	    if (allnine(num,n))
+	    {
+	        res.push_back(1);
+	        while (--n)
+	        res.push_back(0);
+	        res.push_back(1);
+	        return res;
+	    }
+	    else
+	    {
+	        int mid=n/2;
+	        bool leftsmall=false;
+	        int i=mid-1;
+	        int j=(n%2)?mid+1:mid;
+	        while (i>=0 && num[i]==num[j])
+	        i--,j++;
+	        if (i<0 || num[i]<num[j]) leftsmall=true;
+	        while (i>=0)
+	        {
+	            num[j]=num[i];
+	            j++;i--;
+	        }
+	        if (leftsmall==true)
+	        {
+	            int carry=1;
+	            i=mid-1;
+	            if (n%2==1)
+	            {
+	                num[mid]+=carry;
+	                carry=num[mid]/10;
+	                num[mid]%=10;
+	                j=mid+1;
+	            }
+	            else j=mid;
+	           while (i>=0)
+	           {
+	               num[i]+=carry;
+	               carry=num[i]/10;
+	               num[i]%=10;
+	               num[j++]=num[i--];
+	           }
+	        }
+	    }
+	    for (int i=0;i<n;i++)
+	    res.push_back(num[i]);
+	    return res;
+	}
+
+};
+
+//{ Driver Code Starts.
+
+
