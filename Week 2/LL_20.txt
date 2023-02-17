@@ -1,0 +1,31 @@
+
+
+/*
+These are global variables to store heads of split lists
+struct Node* a; //store head of first list
+struct Node* b; //store head of second list
+
+*/
+
+void alternatingSplitList(struct Node* head) 
+{
+   if (head==NULL) return;
+   a=head;
+   Node* even=head->next;
+   Node* evenhead=even;
+   if (even==NULL) return;
+   
+   b=evenhead;
+   head->next=even->next;
+   Node* curr=head->next;
+   while (curr && curr->next)
+   {
+       even->next=curr->next;
+       even=even->next;
+       curr->next=even->next;
+       curr=even->next;
+   }
+   even->next=NULL;
+   
+}
+

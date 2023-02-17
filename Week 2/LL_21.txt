@@ -1,0 +1,23 @@
+//list2 sorted in descending order and list3 sorted in ascending order
+void TripletSum(struct node*head1,struct node* head2,struct node* head3,int target)
+{
+    node* l1=head1;
+    while (l1)
+    {
+        node* l2=head2;
+        node* l3=head3;
+        while (l2 && l3)
+        {
+            int sum=l1->data+l2->data+l3->data;
+            if (sum==target)
+            {cout<<"triplet found"; return;}
+            else if (sum<target)
+            l2=l2->next;
+            else l3=l3->next;
+            l1=l1->next;
+
+        }
+        cout<<"no triplet";
+        return;
+    }
+}

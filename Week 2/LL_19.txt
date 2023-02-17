@@ -1,0 +1,57 @@
+
+
+/*
+Structure of the node of the linked list is as
+struct Node
+{
+	char data;
+	struct Node *next;
+	
+	Node(int x){
+	    data = x;
+	    next = NULL;
+	}
+	
+};
+*/
+// task is to complete this function
+// function should return head to the list after making 
+// necessary arrangements
+struct Node* arrange(Node *head)
+{
+    Node*curr=head;
+    Node* vowhead=NULL;
+        Node* vow=NULL;
+        Node* cons=NULL;
+        Node *conshead=NULL;
+        string match="aeiouAEIOU";
+        while (curr)
+        {
+            if (match.find(curr->data)!=string::npos)
+            {
+                if (vowhead==NULL) {vowhead=curr;vow=vowhead;}
+                else {
+                    vow->next=new Node(curr->data);
+                    vow=vow->next;
+                }
+            }
+            else
+            {
+                if (conshead==NULL){
+                    conshead=curr;
+                    cons=conshead;
+                }
+                else
+                {
+                    cons->next=new Node(curr->data);
+                    cons=cons->next;
+                }
+            }
+            curr=curr->next;
+        }
+        if (vowhead==NULL) return conshead;
+        if (conshead==NULL) return vowhead;
+        vow->next=conshead;
+        cons->next=NULL;
+        return vowhead;
+}
