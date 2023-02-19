@@ -1,0 +1,25 @@
+class Solution {
+public:
+    static bool cmp(const pair<string,int>a,const pair<string,int>b)
+    {
+        if (a.second!=b.second) return a.second>b.second;
+        return a.first<b.first;
+    }
+    vector<string> topKFrequent(vector<string>& words, int k) {
+        unordered_map<string,int>umap;
+        vector<string>res;
+        vector<pair<string,int>>p;
+        for (auto x:words)
+        umap[x]++;
+        for (auto val:umap)
+        p.push_back({val.first,val.second});
+        sort(p.begin(),p.end(),cmp);
+        int i=0;
+        for (auto itr=p.begin();itr!=p.end();itr++)
+        { if (i<k)
+        {
+            res.push_back(p[i].first);
+            i++;}
+            else break;
+        }
+        return res;

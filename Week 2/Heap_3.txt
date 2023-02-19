@@ -1,0 +1,40 @@
+struct minheap{
+    int count;
+    int capacity;
+    minheap *array;
+}
+minheap createminheap(int capacity)
+{
+    minheap *minheap=new minheap;
+    minheap->capacity=capacity;
+    minheap->count=0;
+    minheap->array=new minheap[minheap->capacity];
+    return minheap;
+}
+node* extractmin(minheap* minheap)
+{
+    if (isEmpty(minheap))
+    return NULL;
+    minheap temp=minheap->array[0];
+    if (temp.head->next)
+    minheap->array[0].head=temp.head->next;
+    else
+    {
+        minheap->array[0]=minheap->array[minheap->count-1];
+        --minheap->count;
+    }
+    minheapify(minheap,0);
+    return temp.head;
+}
+node* sort(node* arr[],int n)
+{
+    minheap* minheap=createminheap(n);
+    for (int i=0;i<n;i++)
+    minheap->array[minheap->count++].head=array[i];
+    buildminheap(minheap);
+    while (isEmpty(minheap))
+    {
+        node* temp=extractmin(minheap);
+        cout<<temp->data;
+    }
+}
