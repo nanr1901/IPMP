@@ -1,0 +1,20 @@
+class Solution {
+  public:
+    int minRow(int n, int m, vector<vector<int>> arr) {
+        int min=INT_MAX,c,minindex;
+        for (int i=0;i<n;i++)
+        {
+            c=0;
+            for (int j=0;j<m;j++)
+            
+                if (arr[i][j]==1) c++;
+            
+                if (c<min){
+                    min=c;
+                    minindex=i;
+                }
+            
+        }
+        return minindex+1;
+    }
+};
