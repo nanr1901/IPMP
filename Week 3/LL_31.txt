@@ -1,0 +1,27 @@
+class Solution
+{
+    public:
+    Node *copyList(Node *head)
+    {
+       unordered_map<Node*,Node*>mp;
+       Node *temp,*nhead;
+       temp=head;
+       nhead=new Node(temp->data);
+       mp[temp]=nhead;
+       while (temp->next!=NULL)
+       {
+           nhead->next=new Node(temp->next->data);
+           temp=temp->next;
+           nhead=nhead->next;
+           mp[temp]=nhead;
+       }
+       temp=head;
+       while (temp!=NULL)
+       {
+           mp[temp]->arb=mp[temp->arb];
+           temp=temp->next;
+       }
+       return mp[head];
+    }
+
+};

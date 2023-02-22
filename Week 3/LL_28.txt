@@ -1,0 +1,28 @@
+Node* rev(struct Node*p)
+{
+    if (p==NULL ||p->next==NULL) return p;
+    Node*prev=NULL;
+    Node *temp=rev(p->next);
+    p->next->next=p;
+    p->next=prev;
+    return temp;
+    
+}
+void mergeList(struct Node *p, struct Node *q)
+{
+     Node* phead=rev(p);
+     Node* qhead=rev(q);
+     Node *p_curr = p, *q_curr = q; 
+    Node *p_next, *q_next; 
+    while (p_curr != NULL && q_curr != NULL) 
+    { 
+        p_next = p_curr->next; 
+        q_next = q_curr->next; 
+        q_curr->next = p_next; 
+        p_curr->next = q_curr;
+        p_curr = p_next; 
+        q_curr = q_next; 
+    } 
+  
+    q = q_curr; 
+}

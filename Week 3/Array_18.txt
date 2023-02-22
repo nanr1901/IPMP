@@ -1,0 +1,21 @@
+class Solution
+{
+    public:
+        int closestToZero(int arr[], int n)
+        {
+           sort(arr,arr+n);
+           int minsum=INT_MAX;
+           int l=0,r=n-1;
+           int ml,mr;
+           while (l<r)
+           {
+               if (abs(arr[l]+arr[r])==abs(minsum)) {
+                   minsum=minsum>arr[l]+arr[r]?minsum:arr[l]+arr[r];
+               }
+               if (abs(arr[l]+arr[r])<abs(minsum)) minsum=(arr[l]+arr[r]);
+               else if (arr[l]+arr[r]>0) r--;
+               else l++;
+           }
+           return minsum;
+        }
+};

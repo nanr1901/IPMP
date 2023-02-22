@@ -1,0 +1,21 @@
+class Solution {
+  public:
+    double waterOverflow(int x, int i, int j) {
+        if (j>i) exit(0);
+        double k=x;
+        vector<float>glass(i*i,0.0);
+        int index=0;
+        glass[index]=k;
+        for (int row=1;row<=i;row++)
+        {
+            for (int col=1;col<=row;++col,++index)
+            {
+            k=glass[index];
+            glass[index]=(k>=1.0)?1.0:k;
+            k=(k>=1.0)?(k-1):0;
+            glass[index+row]+=k/2;
+            glass[index+row+1]+=k/2;        }
+    }
+    return glass[(i*(i-1)/2)+j-1];
+    }
+};
