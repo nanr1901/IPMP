@@ -1,0 +1,15 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        vector<string>ans;
+        stringstream ss(s);
+        string word;
+        while (ss>>word)
+        ans.push_back(word);
+        reverse(ans.begin(),ans.end());
+        string rev="";
+        for (auto x:ans)
+        rev=rev+x+" ";
+        return rev.erase(rev.size()-1);
+    }
+};
