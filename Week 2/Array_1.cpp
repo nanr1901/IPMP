@@ -1,3 +1,5 @@
+//union and intersection of two sorted arrays
+
 #include<vector>
 #include<iostream>
 using namespace std;

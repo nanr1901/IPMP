@@ -1,4 +1,4 @@
-//{ Driver Code Starts
+//next smallest palindrome
 #include <bits/stdc++.h>
 
 using namespace std;

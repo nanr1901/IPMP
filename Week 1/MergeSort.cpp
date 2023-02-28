@@ -35,10 +35,10 @@ void mergeSort(vector<int>&arr,int left,int right)
 int main()
 {
     int n;
+    int x;
     cin>>n;
     vector<int>arr;
     for (int i=0;i<n;i++){
-        int x;
         cin>>x;
         arr.push_back(x);
     };

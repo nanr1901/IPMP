@@ -1,3 +1,4 @@
+//missing number from array of n-1 numbers
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
