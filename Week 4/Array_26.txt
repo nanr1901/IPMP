@@ -1,0 +1,20 @@
+class Solution {
+public:
+vector<int>v1,v2;
+    Solution(vector<int>& nums) {
+        v1=nums,v2=nums;
+    }
+    
+    vector<int> reset() {
+        return v1;
+    }
+    
+    vector<int> shuffle() {
+        int i=rand()%v1.size();
+        int j=rand()%v1.size();
+        int temp=v2[i];
+        v2[i]=v2[j];
+        v2[j]=temp;
+        return v2;
+    }
+};
