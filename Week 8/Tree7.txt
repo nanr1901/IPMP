@@ -1,0 +1,16 @@
+class Solution
+{
+public:
+Node* nxt=NULL;
+    void populateNext(Node *root)
+    {
+        
+        if (root)
+        {
+            populateNext(root->right);
+            root->next=nxt;
+            nxt=root;
+            populateNext(root->left);
+        }
+    }
+};
